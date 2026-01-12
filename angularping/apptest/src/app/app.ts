@@ -91,33 +91,6 @@ export class App {
     }
   }
 
-  public async pingServer(): Promise<boolean> {
-    try {
-      const resp = await firstValueFrom(this._http.post(`/server`, { ping: true }));
-
-      console.log('JSON response:', resp);
-      return true;
-    } catch (jsonError: any) {
-      console.log('JSON failed, trying as text...');
-
-      try {
-        const textResponse = await firstValueFrom(
-          this._http.post(
-            `/server`,
-            { ping: true },
-            {
-              responseType: 'text',
-            }
-          )
-        );
-        console.log('Text response:', textResponse);
-        return textResponse.trim().length > 0;
-      } catch (textError) {
-        console.error('Both JSON and text failed:', textError);
-        return false;
-      }
-    }
-  }
 
   public async pingServerPayload(domain: number, isup: number): Promise<boolean> {
     try {
