@@ -1,0 +1,58 @@
+
+{
+
+
+
+  "/servicedesk": {
+    "target": "https://servicedesk.ebicom.pl",
+    "secure": true,
+    "changeOrigin": true,
+    "pathRewrite": { "^/servicedesk": "" }
+  },
+
+
+
+
+  "/sdp": {
+    "target": "https://sdp.ebicom.pl",
+    "secure": true,
+    "changeOrigin": true,
+    "pathRewrite": { "^/sdp": "" }
+  },
+
+  "/ebicom": {
+    "target": "https://ebicom.pl",
+    "secure": true,
+    "changeOrigin": true,
+    "pathRewrite": { "^/ebicom": "" }
+  },
+
+  "/server": {
+    "target": "http://localhost:4000",
+    "secure": false,
+    "changeOrigin": true,
+    "logLevel": "debug"
+  },
+
+  "/datainsert": {
+    "target": "http://localhost:8080/datainsert",
+    "secure": false,
+    "changeOrigin": true,
+    "pathRewrite" : {"^/datainsert" : ""}
+  },
+
+  "/graphfromdomain" : {
+    "target": "http://localhost:8080/graphfromdomain",
+    "secure": false,
+    "changeOrigin": true,
+    "pathRewrite" : {"^/graphfromdomain" : ""}
+
+  },
+  "/raportfromdomain" : {
+    "target": "http://localhost:8080/raportfromdomain",
+    "secure": false,
+    "changeOrigin": true,
+    "pathRewrite" : {"^/raportfromdomain" : ""}
+
+  }
+}

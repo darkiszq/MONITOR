@@ -1,0 +1,145 @@
+/* Application-wide Styles */
+
+
+
+h1 {
+  color: #369;
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: 250%;
+}
+h2, h3 {
+  color: #444;
+  font-family: Arial, Helvetica, sans-serif;
+  font-weight: lighter;
+  text-align: left;
+}
+
+body, input[type="text"], button {
+  color: #333;
+  font-family: Cambria, Georgia, serif;
+}
+button {
+  background-color: #eee;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  color: black;
+  font-size: 1.2rem;
+  padding: 1rem;
+  margin-right: 1rem;
+  margin-bottom: 1rem;
+  margin-top: 1rem;
+}
+button:hover {
+  background-color: black;
+  color: white;
+}
+button:disabled {
+  background-color: #eee;
+  color: #aaa;
+  cursor: auto;
+}
+
+/* everywhere else */
+* {
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+
+.shadow-dance-text {
+    font-size: 4rem;
+    color: #ffffff;
+    text-shadow: 5px 5px 0 #ff005e, 10px 10px 0 #00d4ff;
+    animation: shadow-dance 2s infinite;
+    text-align: center;
+
+}
+
+@keyframes shadow-dance {
+    0%, 100% {
+        text-shadow: 5px 5px 0 #ff005e, 10px 10px 0 #00d4ff;
+    }
+    50% {
+        text-shadow: -5px -5px 0 #00d4ff, -10px -10px 0 #ff005e;
+    }
+}
+
+
+.contain{
+    margin: auto;
+    width: 100%;
+    display: flex;
+    padding: 50px;
+    align-content: flex-start;
+    justify-content: space-evenly;
+    width: fit-content;
+}
+
+
+
+
+.row{
+    display: flex;
+    margin: 20px;
+    flex-direction: column
+}
+
+.glow-red {
+  font-size: 80px;
+  color: #fff;
+  text-align: center;
+  animation: glow 1s ease-in-out infinite alternate;
+}
+
+@keyframes glow-red {
+  from {
+    text-shadow: 0 0 10px #fff, 0 0 20px #fff, 0 0 30px #e60000, 0 0 40px #e60000, 0 0 50px #e60000, 0 0 60px #e60000, 0 0 70px #e60000;
+  }
+
+  to {
+    text-shadow: 0 0 20px #fff, 0 0 30px #ff4d4d, 0 0 40px #ff4d4d, 0 0 50px #ff4d4d, 0 0 60px #ff4d4d, 0 0 70px #ff4d4d, 0 0 80px #ff4d4d;
+  }
+}
+
+@-webkit-keyframes glow-red {
+  from {
+    text-shadow: 0 0 10px #fff, 0 0 20px #fff, 0 0 30px #e60000, 0 0 40px #e60000, 0 0 50px #e60000, 0 0 60px #e60000, 0 0 70px #e60000;
+  }
+
+  to {
+    text-shadow: 0 0 20px #fff, 0 0 30px #ff4d4d, 0 0 40px #ff4d4d, 0 0 50px #ff4d4d, 0 0 60px #ff4d4d, 0 0 70px #ff4d4d, 0 0 80px #ff4d4d;
+  }
+}
+
+
+.glow-green {
+  font-size: 80px;
+  color: #fff;
+  text-align: center;
+  animation: glow 1s ease-in-out infinite alternate;
+}
+
+@keyframes glow-green {
+  from {
+    text-shadow: 0 0 10px #fff, 0 0 20px #fff, 0 0 30px #00e604, 0 0 40px #00e604, 0 0 50px #00e604, 0 0 60px #00e604, 0 0 70px #00e604;
+  }
+
+  to {
+    text-shadow: 0 0 20px #fff, 0 0 30px #45fd48, 0 0 40px #45fd48, 0 0 50px #45fd48, 0 0 60px #45fd48, 0 0 70px #45fd48, 0 0 80px #45fd48;
+  }
+}
+
+@-webkit-keyframes glow-green {
+  from {
+    text-shadow: 0 0 10px #fff, 0 0 20px #fff, 0 0 30px #00e604, 0 0 40px #00e604, 0 0 50px #00e604, 0 0 60px #00e604, 0 0 70px #00e604;
+  }
+
+  to {
+    text-shadow: 0 0 20px #fff, 0 0 30px #45fd48, 0 0 40px #45fd48, 0 0 50px #45fd48, 0 0 60px #45fd48, 0 0 70px #45fd48, 0 0 80px #45fd48;
+  }
+}
+
+.pie{
+  height:200px;
+  width: 200px;
+}
