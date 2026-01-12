@@ -1,0 +1,32 @@
+
+
+.row{
+    display: flex;
+    margin: 20px;
+    flex-direction: column
+}
+
+.pie{
+  height:200px;
+  width: 200px;
+}
+
+
+
+h2, h3 {
+  color: #444;
+  font-family: Arial, Helvetica, sans-serif;
+  font-weight: lighter;
+  text-align: left;
+}
+
+
+.contain{
+    margin: auto;
+    width: 100%;
+    display: flex;
+    padding: 50px;
+    align-content: flex-start;
+    justify-content: space-evenly;
+    width: fit-content;
+}
