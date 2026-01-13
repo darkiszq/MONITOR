@@ -30,9 +30,9 @@ export class Cdascrape {
 
     this.source.subscribe(()=>{
       this.Scrape(this.last).then((result)=>{
-        if(result.new = true && this.last != result.link){
+        if(result.new == true && this.last != result.link){
           this.last = result.link
-
+          console.log(result.link)
           console.log(result)
 
           let html = `<span> <h3> ${result.author}</h3> <br> <h2> <a href="${result.link}"> ${result.title} </a> </h2></span> `
