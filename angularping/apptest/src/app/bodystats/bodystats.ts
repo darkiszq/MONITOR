@@ -43,30 +43,30 @@ export class Bodystats {
         if (result) {
           this.desk.set('ONLINE');
           console.log('/servicedesk');
-          this.pingServerPayload(4, 1);
+          this.pingServerPayload("https://servicedesk.ebicom.pl", 1);
         } else {
           this.desk.set('OFFLINE');
-          this.pingServerPayload(4, 0);
+          this.pingServerPayload("https://servicedesk.ebicom.pl", 0);
         }
       });
       this.pingProxied('/ebicom').then((result) => {
         console.log('pingServicedesk result', result);
         if (result) {
           this.ebicom.set('ONLINE');
-          this.pingServerPayload(6, 1);
+          this.pingServerPayload("https://ebicom.pl", 1);
         } else {
           this.ebicom.set('OFFLINE');
-          this.pingServerPayload(6, 0);
+          this.pingServerPayload("https://ebicom.pl", 0);
         }
       });
       this.pingProxied('/sdp').then((result) => {
         console.log('pingServicedesk result', result);
         if (result) {
           this.sdp.set('ONLINE');
-          this.pingServerPayload(5, 1);
+          this.pingServerPayload("https://sdp.ebicom.pl", 1);
         } else {
           this.sdp.set('OFFLINE');
-          this.pingServerPayload(5, 0);
+          this.pingServerPayload("https://sdp.ebicom.pl", 0);
         }
       });
     });
@@ -87,23 +87,19 @@ export class Bodystats {
   }
 
 
-  public async pingServerPayload(domain: number, isup: number): Promise<boolean> {
+  public async pingServerPayload(domain: string, isup: number): Promise<boolean> {
     try {
       const payload = { domain, isup: isup === 1 };
-
       const resp = await firstValueFrom(this._http.post('/datainsert', payload));
-
       console.log(`Data inserted for domain ${domain}:`, resp);
       return true;
     } catch (err: any) {
       console.error(`Data insert failed for domain ${domain}:`, err);
-
       if (err instanceof HttpErrorResponse) {
         console.error('Error status:', err.status);
         console.error('Error body:', err.error);
         console.error('Error headers:', err.headers);
       }
-
       return false;
     }
   }
@@ -135,12 +131,9 @@ export class Bodystats {
 
   public async dataforstyle(domain : string){
     try{
-
     const payload = {domain : domain};
     const resp = await firstValueFrom(this._http.post<{ result: number }>('/graphfromdomain', payload))
-
     return resp.result;
-
     }
     catch(err){
       console.error(`Data insert failed for domain ${domain}:`, err);
@@ -159,12 +152,10 @@ export class Bodystats {
       let json;
       console.log(json)
       try{
-
       const payload = {domain : domain};
       const resp = await firstValueFrom(this._http.post('/raportfromdomain', payload))
         console.log(resp)
       json = resp;
-
       }
       catch(err){
       console.error(`Data raport failed for domain ${domain}:`, err);
@@ -173,12 +164,9 @@ export class Bodystats {
         console.error('Error body:', err.error);
         console.error('Error headers:', err.headers);
       }
-      return -1;
+      return false;
       }
-
       let jsonstring = JSON.stringify(json)
-
-
       const blob = new Blob([jsonstring], { type: 'application/json' });
       const url = window.URL.createObjectURL(blob);
       const a = document.createElement('a');
@@ -186,6 +174,6 @@ export class Bodystats {
       a.download = 'network_calls.json';
       a.click();
       window.URL.revokeObjectURL(url);
-      return 0;
+      return true;
   }
 }

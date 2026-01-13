@@ -21,7 +21,7 @@
     <h2> EBICOM STATUS </h2>
       <h3> {{ebicom()}}</h3>
   </div>
-    <div class="pie">
+    <div class="pie" (click)="raportDownload(1)">
       <table class="charts-css pie hide-data">
         <caption> Pie #2 </caption>
         <tbody>
@@ -38,7 +38,7 @@
     <h2> SDP STATUS </h2>
       <h3>{{sdp()}}</h3>
   </div>
-    <div class="pie">
+    <div class="pie" (click)="raportDownload(2)">
       <table class="charts-css pie hide-data">
         <caption> Pie #1 </caption>
         <tbody>
