@@ -47,8 +47,9 @@
     "@angular/compiler-cli": "^21.0.0",
     "@types/cors": "^2.8.19",
     "@types/express": "^5.0.1",
+    "@types/jsdom": "^27.0.0",
     "@types/node": "^20.17.19",
-    "jsdom": "^27.1.0",
+    "jsdom": "^27.4.0",
     "typescript": "~5.9.2",
     "vitest": "^4.0.8"
   }

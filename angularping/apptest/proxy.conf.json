@@ -54,5 +54,13 @@
     "changeOrigin": true,
     "pathRewrite" : {"^/raportfromdomain" : ""}
 
+  },
+
+  "/scrape" : {
+    "target": "http://localhost:8080/scrape",
+    "secure": false,
+    "changeOrigin": true,
+    "pathRewrite" : {"^/scrape" : ""}
+
   }
 }

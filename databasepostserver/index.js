@@ -1,5 +1,7 @@
 import express from "express";
 import mysql from "mysql2/promise";
+import {JSDOM} from "jsdom"
+
 
 const app = express();
 const PORT = 8080;
@@ -103,6 +105,12 @@ app.post("/raportfromdomain", async (req, res) => {
   }
 });
 
+app.post("/scrape", async(req,res) =>{
+    ScrapeCda(res, req.body.last)
+})
+
+
+
 app.listen(PORT, (error) => {
   if (error) {
     throw error;
@@ -125,5 +133,37 @@ async function idGet(res, domain) {
     console.error("DB error:", err.error);
     res.status(400).json({ ok: false, error: String(err) });
     return -1;
+  }
+}
+
+async function ScrapeCda(res, last) {
+let nodelink;
+let node
+  try {
+    const response = await fetch("https://cdaction.pl/");
+    const html = await response.text();
+
+    // Do NOT execute site scripts (they reference globals like `wp`) — parse HTML only
+    const dom = new JSDOM(html);
+
+    
+    node = dom.window.document.getElementById("infinite-news")?.children?.item(0);
+    nodelink = dom.window.document.getElementById("infinite-news")?.children?.item(0)?.querySelector('a').href;
+    console.log(node);
+  } catch (err) {
+    console.error("ScrapeCda error:", err);
+  }
+  if(nodelink != last){
+    let title = node.getElementsByClassName("title-desktop")
+    let author = node.getElementsByClassName("author-name")
+    title = title[0].innerHTML
+    author = author[0].innerHTML
+
+    console.log(`NOWY ARTYKUŁ ${author} \n ${title}`)
+
+    res.json({ok: true, new : true, author : author, title : title, link : nodelink})
+  }
+  else{
+    res.json({ok: true, new : false, author : "old", title : "old", link:"old"})
   }
 }
