@@ -7,10 +7,22 @@ import {
 import express from 'express';
 import { join } from 'node:path';
 
+/**
+ * Main server component
+ */
+
+
+/**
+     * @ignore
+     */
 const browserDistFolder = join(import.meta.dirname, '../browser');
-
+/**
+     * @ignore
+     */
 const app = express();
-
+/**
+     * @ignore
+     */
 const angularApp = new AngularNodeAppEngine();
 
 /**
@@ -28,7 +40,9 @@ const angularApp = new AngularNodeAppEngine();
 //
 
 // npm run serve:ssr:apptest
-
+/**
+     * @ignore
+     */
 app.use(express.json());
 
 /**

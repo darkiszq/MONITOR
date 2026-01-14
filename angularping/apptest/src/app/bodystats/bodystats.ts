@@ -5,6 +5,9 @@ import { firstValueFrom } from 'rxjs';
 import { interval } from 'rxjs';
 import { HttpErrorResponse } from '@angular/common/http';
 
+/**
+ * Website stats component
+ */
 
 @Component({
   selector: 'app-bodystats',
@@ -14,24 +17,49 @@ import { HttpErrorResponse } from '@angular/common/http';
   standalone: true
 })
 export class Bodystats {
+   /**
+     * @ignore
+     */
   desk = signal('wait');
+   /**
+     * @ignore
+     */
   ebicom = signal('wait');
+   /**
+     * @ignore
+     */
   sdp = signal('wait');
 
-
+   /**
+     * @ignore
+     */
   stoparr = Array(0.2, 0.3, .4)
+   /**
+     * domains in app in order
+     */
   domainarr = Array("https://servicedesk.ebicom.pl", "https://ebicom.pl", "https://sdp.ebicom.pl")
 
+  /**
+     * Map for style cache
+     */
   private _styleCache = new Map<number, {on: string, off: string}>();
 
+   /**
+     * On init, preloads styles
+     */
   ngOnInit() {
-    // Pre-load danych
+    // Pre-load data
     this.preloadStyles();
   }
 
-
+   /**
+     * @ignore
+     */
   private source = interval(10000);
 
+   /**
+     * @ignore
+     */
   constructor(private _http: HttpClient, private cdr: ChangeDetectorRef) {
 
 
@@ -72,7 +100,19 @@ export class Bodystats {
     });
   }
 
-  // ng serve --proxy-config proxy.conf.json
+    /**
+ *
+ * Pings website
+ * @param {string} proxy proxy name for website in proxy.conf.json
+ * @returns If got response
+ * @example
+ * let online;
+ * constructor(private _http: HttpClient, private cdr: ChangeDetectorRef) {
+    this.pingProxied('/servicedesk').then((result) => {
+    online = result
+    }};
+    console.log(online);
+ */
 
   public async pingProxied(proxy: string): Promise<boolean> {
     try {
@@ -85,6 +125,22 @@ export class Bodystats {
       return false;
     }
   }
+
+
+    /**
+ *
+ * Sends information about domain's activity to database
+ * @param {string} domain domain for which its saving
+ * @param {number} isup if website is online
+ * @returns If successful
+ * @example
+ * constructor(private _http: HttpClient, private cdr: ChangeDetectorRef) {
+    this.pingServerPayload('https://sdp.ebicom.pl', 0).then((result) => {
+    console.log(result);
+    }};
+
+
+ */
 
 
   public async pingServerPayload(domain: string, isup: number): Promise<boolean> {
@@ -104,6 +160,11 @@ export class Bodystats {
     }
   }
 
+    /**
+ *
+ * Pre-loads piechart styles into website's chache
+ * @returns Nothing
+ */
     async preloadStyles() {
     for (let i = 0; i < this.domainarr.length; i++) {
       const stop = await this.dataforstyle(this.domainarr[i]);
@@ -128,7 +189,12 @@ export class Bodystats {
     };
   }
 
-
+    /**
+ *
+ * Asks backend server for piechart's style data
+ * @param {string} domain domain for which its asking
+ * @returns Percentage covered by first field of a piechart; if error occurs returns -1
+ */
   public async dataforstyle(domain : string){
     try{
     const payload = {domain : domain};
@@ -145,6 +211,13 @@ export class Bodystats {
       return -1;
     }
   }
+/**
+ * Asks backend server for raport and downloads it onto user's machine
+ * @param {number} number number of which website in order in app it generates the raport of
+ * @returns If successful
+ * @example
+ * <button (click)="raportDownload(0)">DOWNLOAD RAPORT</button>
+*/
 
   public async raportDownload(number : number){
       console.log("download!!!")

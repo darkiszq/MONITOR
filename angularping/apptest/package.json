@@ -1,5 +1,6 @@
 {
-  "name": "apptest",
+  "name": "MONITOR",
+  "description": "MONITOR APP JSON description",
   "version": "0.0.0",
   "scripts": {
     "ng": "ng",
@@ -7,7 +8,8 @@
     "build": "ng build",
     "watch": "ng build --watch --configuration development",
     "test": "ng test",
-    "serve:ssr:apptest": "node dist/apptest/server/server.mjs"
+    "serve:ssr:apptest": "node dist/apptest/server/server.mjs",
+    "compodoc": "npx compodoc -p tsconfig.doc.json --includes src/docs --output documentation"
   },
   "prettier": {
     "printWidth": 100,
