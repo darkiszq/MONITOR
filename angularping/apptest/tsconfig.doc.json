@@ -1,4 +1,4 @@
 {
-  "include": ["C:/Users/PawełOrłowski/OneDrive - Ebicom Sp. z o.o/Pulpit/NEWFROMCLONEDPROJECT/MONITOR/angularping/apptest/src/**/*.ts"],
+  "include": ["./src/**/*.ts"],
   "exclude": ["src/test.ts", "src/**/*.spec.ts", "src/app/file-to-exclude.ts"]
 }
