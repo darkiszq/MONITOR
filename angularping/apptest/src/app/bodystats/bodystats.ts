@@ -1,9 +1,33 @@
-import { Component,signal } from '@angular/core';
+import { Component, signal } from '@angular/core';
+import { CommonModule } from '@angular/common';
 import { HttpClient } from '@angular/common/http';
 import { ChangeDetectorRef } from '@angular/core';
 import { firstValueFrom } from 'rxjs';
 import { interval } from 'rxjs';
 import { HttpErrorResponse } from '@angular/common/http';
+import jsPDF from "jspdf";
+import autoTable from "jspdf-autotable"
+
+
+/**
+ * Raport response blueprint
+ */
+
+interface RaportResponse {
+  /**
+ * Raport title
+ */
+  Title: string;
+
+  /**
+ * Raport data
+ */
+  result: Array<{
+    Date: string;
+    'Turned on': number;
+    Domain: string;
+  }>;
+}
 
 /**
  * Website stats component
@@ -11,11 +35,14 @@ import { HttpErrorResponse } from '@angular/common/http';
 
 @Component({
   selector: 'app-bodystats',
-  imports: [],
+  imports: [CommonModule],
   templateUrl: './bodystats.html',
   styleUrl: './bodystats.css',
   standalone: true
 })
+
+
+
 export class Bodystats {
    /**
      * @ignore
@@ -50,6 +77,7 @@ export class Bodystats {
   ngOnInit() {
     // Pre-load data
     this.preloadStyles();
+    // Load PDFDocument dynamically
   }
 
    /**
@@ -66,6 +94,8 @@ export class Bodystats {
 
 
     this.source.subscribe(() => {
+      console.log("PING")
+
       this.pingProxied('/servicedesk').then((result) => {
         console.log('pingServicedesk result', result);
         if (result) {
@@ -211,22 +241,22 @@ export class Bodystats {
       return -1;
     }
   }
-/**
- * Asks backend server for raport and downloads it onto user's machine
+   /**
+ * Asks backend server for raport and downloads it onto user's machine as a pdf file
  * @param {number} number number of which website in order in app it generates the raport of
  * @returns If successful
  * @example
  * <button (click)="raportDownload(0)">DOWNLOAD RAPORT</button>
 */
 
-  public async raportDownload(number : number){
+public async raportDownload(number : number){
       console.log("download!!!")
       let domain = this.domainarr[number]
       let json;
       console.log(json)
       try{
       const payload = {domain : domain};
-      const resp = await firstValueFrom(this._http.post('/raportfromdomain', payload))
+      const resp = await firstValueFrom(this._http.post<RaportResponse>('/raportfromdomain', payload))
         console.log(resp)
       json = resp;
       }
@@ -239,14 +269,44 @@ export class Bodystats {
       }
       return false;
       }
-      let jsonstring = JSON.stringify(json)
-      const blob = new Blob([jsonstring], { type: 'application/json' });
-      const url = window.URL.createObjectURL(blob);
-      const a = document.createElement('a');
-      a.href = url;
-      a.download = 'network_calls.json';
-      a.click();
-      window.URL.revokeObjectURL(url);
+
+
+
+      let textarray : string[][] = []
+
+      json.result.forEach(element => {
+        let online = element['Turned on'] == 1 ? 'Online' : 'Offline';
+        textarray.push(Array(element.Date, online, element.Domain))
+      });
+
+
+
+      const doc = new jsPDF();
+      doc.setFontSize(16);
+      doc.text(json.Title, 10, 10);
+      doc.setFontSize(12);
+      const headers = [["Date", "Online", "Domain"]];
+      const data = textarray;
+      autoTable(doc, {
+        head: headers,
+        body: data,
+        startY: 30,
+      });
+      doc.save(json.Title+".pdf");
+
+
+
+
+      // let jsonstring = JSON.stringify(json)
+      // const blob = new Blob([jsonstring], { type: 'application/json' });
+      // const url = window.URL.createObjectURL(blob);
+      // const a = document.createElement('a');
+      // a.href = url;
+      // a.download = 'network_calls.json';
+      // a.click();
+      // window.URL.revokeObjectURL(url);
+
       return true;
+
   }
 }

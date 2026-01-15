@@ -175,7 +175,9 @@
                         <i>Default value : </i><code>{
   providers: [
     provideBrowserGlobalErrorListeners(),
-    provideRouter(routes), provideClientHydration(withEventReplay())
+    provideRouter(routes),
+    provideClientHydration(withEventReplay()),
+    provideHttpClient()
   ]
 }</code>
                     </td>

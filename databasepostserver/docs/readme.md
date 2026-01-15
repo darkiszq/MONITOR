@@ -3,7 +3,7 @@
 
 ### POST /
 **PAYLOAD – NULL**
-**ALWAYS**	- returns JSON with a message „POST request IS called”
+**RETURNS** JSON with a message „POST request IS called”
 
 
 ### POST //datainstert 

@@ -1,0 +1,667 @@
+<!doctype html>
+<html class="no-js" lang="">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="x-ua-compatible" content="ie=edge">
+        <title>MONITOR documentation</title>
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+
+        <link rel="icon" type="image/x-icon" href="../images/favicon.ico">
+	   <link rel="stylesheet" href="../styles/style.css">
+        <link rel="stylesheet" href="../styles/dark.css">
+    </head>
+    <body>
+          <script>
+               // Blocking script to avoid flickering dark mode
+               // Dark mode toggle button
+               var useDark = window.matchMedia('(prefers-color-scheme: dark)');
+               var darkModeState = useDark.matches;
+               var $darkModeToggleSwitchers = document.querySelectorAll('.dark-mode-switch input');
+               var $darkModeToggles = document.querySelectorAll('.dark-mode-switch');
+               var darkModeStateLocal = localStorage.getItem('compodoc_darkmode-state');
+
+               function checkToggle(check) {
+                    for (var i = 0; i < $darkModeToggleSwitchers.length; i++) {
+                         $darkModeToggleSwitchers[i].checked = check;
+                    }
+               }
+
+               function toggleDarkMode(state) {
+                    if (window.localStorage) {
+                         localStorage.setItem('compodoc_darkmode-state', state);
+                    }
+
+                    checkToggle(state);
+
+                    const hasClass = document.body.classList.contains('dark');
+
+                    if (state) {
+                         for (var i = 0; i < $darkModeToggles.length; i++) {
+                              $darkModeToggles[i].classList.add('dark');
+                         }
+                         if (!hasClass) {
+                              document.body.classList.add('dark');
+                         }
+                    } else {
+                         for (var i = 0; i < $darkModeToggles.length; i++) {
+                              $darkModeToggles[i].classList.remove('dark');
+                         }
+                         if (hasClass) {
+                              document.body.classList.remove('dark');
+                         }
+                    }
+               }
+
+               useDark.addEventListener('change', function (evt) {
+                    toggleDarkMode(evt.matches);
+               });
+               if (darkModeStateLocal) {
+                    darkModeState = darkModeStateLocal === 'true';
+               }
+               toggleDarkMode(darkModeState);
+          </script>
+          <script>
+              // --- Iframe navigation tracking for Template Playground ---
+              function sendCurrentUrlToParent() {
+                  if (window.parent && window.parent !== window) {
+                      window.parent.postMessage({
+                          type: 'compodoc-iframe-navigate',
+                          url: window.location.pathname + window.location.hash
+                      }, '*');
+                  }
+              }
+              window.addEventListener('hashchange', sendCurrentUrlToParent, false);
+              window.addEventListener('popstate', sendCurrentUrlToParent, false);
+              window.addEventListener('DOMContentLoaded', sendCurrentUrlToParent, false);
+          </script>
+
+        <div class="navbar navbar-default navbar-fixed-top d-md-none p-0">
+               <div class="d-flex">
+                    <a href="../" class="navbar-brand">MONITOR documentation</a>
+                    <button type="button" class="btn btn-default btn-menu ion-ios-menu" id="btn-menu"></button>
+               </div>
+        </div>
+
+        <div class="xs-menu menu" id="mobile-menu">
+                <div id="book-search-input" role="search"><input type="text" placeholder="Type to search"></div>            <compodoc-menu></compodoc-menu>
+        </div>
+
+        <div class="container-fluid main">
+           <div class="row main">
+               <div class="d-none d-md-block menu">
+                   <compodoc-menu mode="normal"></compodoc-menu>
+               </div>
+               <!-- START CONTENT -->
+               <div class="content interface">
+                   <div class="content-data">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<ol class="breadcrumb">
+  <li class="breadcrumb-item">Interfaces</li>
+  <li class="breadcrumb-item"
+  >
+  RaportResponse</li>
+</ol>
+
+<ul class="nav nav-tabs" role="tablist">
+        <li class="nav-item">
+            <a href="#info" 
+                class="nav-link"
+                class="nav-link active"
+                role="tab" id="info-tab" data-bs-toggle="tab" data-link="info">Info</a>
+        </li>
+        <li class="nav-item">
+            <a href="#source" 
+                class="nav-link"
+                
+                role="tab" id="source-tab" data-bs-toggle="tab" data-link="source">Source</a>
+        </li>
+</ul>
+
+<div class="tab-content">
+    <div class="tab-pane fade active in" id="info">
+        <p class="comment">
+            <h3>File</h3>
+        </p>
+        <p class="comment">
+            <code>src/app/bodystats/bodystats.ts</code>
+        </p>
+
+
+            <p class="comment">
+                <h3>Description</h3>
+            </p>
+            <p class="comment">
+                <p>Raport response blueprint</p>
+
+            </p>
+
+
+        <section data-compodoc="block-index">
+            <h3 id="index">Index</h3>
+            <table class="table table-sm table-bordered index-table">
+                <tbody>
+                    <tr>
+                        <td class="col-md-4">
+                            <h6><b>Properties</b></h6>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="col-md-4">
+                            <ul class="index-list">
+                                <li>
+                                        <a href="#result" 
+>
+                                            result
+                                        </a>
+                                </li>
+                                <li>
+                                        <a href="#Title" 
+>
+                                            Title
+                                        </a>
+                                </li>
+                            </ul>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </section>
+
+
+
+            <section data-compodoc="block-properties">
+                <h3 id="inputs">Properties</h3>
+                    <table class="table table-sm table-bordered">
+                        <tbody>
+                                <tr>
+                                    <td class="col-md-4">
+                                        <a name="result"></a>
+                                        <span class="name "><b>result</b>
+                                            <a href="#result">
+                                                <span class="icon ion-ios-link"></span>
+                                            </a>
+                                        </span>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td class="col-md-4">
+                                        <code>result:     <code>Array&lt;literal type&gt;</code>
+</code>
+                                    </td>
+                                </tr>
+
+
+                                    <tr>
+                                        <td class="col-md-4">
+                                            <i>Type : </i>    <code>Array&lt;literal type&gt;</code>
+
+                                        </td>
+                                    </tr>
+
+
+
+
+
+                            <tr>
+                                <td class="col-md-4">
+                                    <div class="io-description"><p>Raport data</p>
+</div>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                    <table class="table table-sm table-bordered">
+                        <tbody>
+                                <tr>
+                                    <td class="col-md-4">
+                                        <a name="Title"></a>
+                                        <span class="name "><b>Title</b>
+                                            <a href="#Title">
+                                                <span class="icon ion-ios-link"></span>
+                                            </a>
+                                        </span>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td class="col-md-4">
+                                        <code>Title:         <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
+</code>
+                                    </td>
+                                </tr>
+
+
+                                    <tr>
+                                        <td class="col-md-4">
+                                            <i>Type : </i>        <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
+
+                                        </td>
+                                    </tr>
+
+
+
+
+
+                            <tr>
+                                <td class="col-md-4">
+                                    <div class="io-description"><p>Raport title</p>
+</div>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+            </section>
+    </div>
+
+
+    <div class="tab-pane fade  tab-source-code" id="source">
+        <pre class="line-numbers compodoc-sourcecode"><code class="language-typescript">import { Component, signal } from &#x27;@angular/core&#x27;;
+import { CommonModule } from &#x27;@angular/common&#x27;;
+import { HttpClient } from &#x27;@angular/common/http&#x27;;
+import { ChangeDetectorRef } from &#x27;@angular/core&#x27;;
+import { firstValueFrom } from &#x27;rxjs&#x27;;
+import { interval } from &#x27;rxjs&#x27;;
+import { HttpErrorResponse } from &#x27;@angular/common/http&#x27;;
+import jsPDF from &quot;jspdf&quot;;
+import autoTable from &quot;jspdf-autotable&quot;
+
+
+/**
+ * Raport response blueprint
+ */
+
+interface RaportResponse {
+  /**
+ * Raport title
+ */
+  Title: string;
+
+  /**
+ * Raport data
+ */
+  result: Array&lt;{
+    Date: string;
+    &#x27;Turned on&#x27;: number;
+    Domain: string;
+  }&gt;;
+}
+
+/**
+ * Website stats component
+ */
+
+@Component({
+  selector: &#x27;app-bodystats&#x27;,
+  imports: [CommonModule],
+  templateUrl: &#x27;./bodystats.html&#x27;,
+  styleUrl: &#x27;./bodystats.css&#x27;,
+  standalone: true
+})
+
+
+
+export class Bodystats {
+   /**
+     * @ignore
+     */
+  desk &#x3D; signal(&#x27;wait&#x27;);
+   /**
+     * @ignore
+     */
+  ebicom &#x3D; signal(&#x27;wait&#x27;);
+   /**
+     * @ignore
+     */
+  sdp &#x3D; signal(&#x27;wait&#x27;);
+
+   /**
+     * @ignore
+     */
+  stoparr &#x3D; Array(0.2, 0.3, .4)
+   /**
+     * domains in app in order
+     */
+  domainarr &#x3D; Array(&quot;https://servicedesk.ebicom.pl&quot;, &quot;https://ebicom.pl&quot;, &quot;https://sdp.ebicom.pl&quot;)
+
+  /**
+     * Map for style cache
+     */
+  private _styleCache &#x3D; new Map&lt;number, {on: string, off: string}&gt;();
+
+   /**
+     * On init, preloads styles
+     */
+  ngOnInit() {
+    // Pre-load data
+    this.preloadStyles();
+    // Load PDFDocument dynamically
+  }
+
+   /**
+     * @ignore
+     */
+  private source &#x3D; interval(10000);
+
+   /**
+     * @ignore
+     */
+  constructor(private _http: HttpClient, private cdr: ChangeDetectorRef) {
+
+
+
+
+    this.source.subscribe(() &#x3D;&gt; {
+      console.log(&quot;PING&quot;)
+
+      this.pingProxied(&#x27;/servicedesk&#x27;).then((result) &#x3D;&gt; {
+        console.log(&#x27;pingServicedesk result&#x27;, result);
+        if (result) {
+          this.desk.set(&#x27;ONLINE&#x27;);
+          console.log(&#x27;/servicedesk&#x27;);
+          this.pingServerPayload(&quot;https://servicedesk.ebicom.pl&quot;, 1);
+        } else {
+          this.desk.set(&#x27;OFFLINE&#x27;);
+          this.pingServerPayload(&quot;https://servicedesk.ebicom.pl&quot;, 0);
+        }
+      });
+      this.pingProxied(&#x27;/ebicom&#x27;).then((result) &#x3D;&gt; {
+        console.log(&#x27;pingServicedesk result&#x27;, result);
+        if (result) {
+          this.ebicom.set(&#x27;ONLINE&#x27;);
+          this.pingServerPayload(&quot;https://ebicom.pl&quot;, 1);
+        } else {
+          this.ebicom.set(&#x27;OFFLINE&#x27;);
+          this.pingServerPayload(&quot;https://ebicom.pl&quot;, 0);
+        }
+      });
+      this.pingProxied(&#x27;/sdp&#x27;).then((result) &#x3D;&gt; {
+        console.log(&#x27;pingServicedesk result&#x27;, result);
+        if (result) {
+          this.sdp.set(&#x27;ONLINE&#x27;);
+          this.pingServerPayload(&quot;https://sdp.ebicom.pl&quot;, 1);
+        } else {
+          this.sdp.set(&#x27;OFFLINE&#x27;);
+          this.pingServerPayload(&quot;https://sdp.ebicom.pl&quot;, 0);
+        }
+      });
+    });
+  }
+
+    /**
+ *
+ * Pings website
+ * @param {string} proxy proxy name for website in proxy.conf.json
+ * @returns If got response
+ * @example
+ * let online;
+ * constructor(private _http: HttpClient, private cdr: ChangeDetectorRef) {
+    this.pingProxied(&#x27;/servicedesk&#x27;).then((result) &#x3D;&gt; {
+    online &#x3D; result
+    }};
+    console.log(online);
+ */
+
+  public async pingProxied(proxy: string): Promise&lt;boolean&gt; {
+    try {
+      const resp: any &#x3D; await firstValueFrom(
+        this._http.get(proxy, { observe: &#x27;response&#x27;, responseType: &#x27;text&#x27; as &#x27;json&#x27; })
+      );
+      return resp &amp;&amp; resp.status &#x3D;&#x3D;&#x3D; 200;
+    } catch (err) {
+      console.error(&#x27;pingServicedesk failed&#x27;, err);
+      return false;
+    }
+  }
+
+
+    /**
+ *
+ * Sends information about domain&#x27;s activity to database
+ * @param {string} domain domain for which its saving
+ * @param {number} isup if website is online
+ * @returns If successful
+ * @example
+ * constructor(private _http: HttpClient, private cdr: ChangeDetectorRef) {
+    this.pingServerPayload(&#x27;https://sdp.ebicom.pl&#x27;, 0).then((result) &#x3D;&gt; {
+    console.log(result);
+    }};
+
+
+ */
+
+
+  public async pingServerPayload(domain: string, isup: number): Promise&lt;boolean&gt; {
+    try {
+      const payload &#x3D; { domain, isup: isup &#x3D;&#x3D;&#x3D; 1 };
+      const resp &#x3D; await firstValueFrom(this._http.post(&#x27;/datainsert&#x27;, payload));
+      console.log(&#x60;Data inserted for domain ${domain}:&#x60;, resp);
+      return true;
+    } catch (err: any) {
+      console.error(&#x60;Data insert failed for domain ${domain}:&#x60;, err);
+      if (err instanceof HttpErrorResponse) {
+        console.error(&#x27;Error status:&#x27;, err.status);
+        console.error(&#x27;Error body:&#x27;, err.error);
+        console.error(&#x27;Error headers:&#x27;, err.headers);
+      }
+      return false;
+    }
+  }
+
+    /**
+ *
+ * Pre-loads piechart styles into website&#x27;s chache
+ * @returns Nothing
+ */
+    async preloadStyles() {
+    for (let i &#x3D; 0; i &lt; this.domainarr.length; i++) {
+      const stop &#x3D; await this.dataforstyle(this.domainarr[i]);
+      this._styleCache.set(i, {
+        on: &#x60;--start: 0.0; --end: ${stop}; --color: #00d4ff&#x60;,
+        off: &#x60;--start: ${stop}; --end: 1; --color: #ff005e&#x60;
+      });
+    }
+  }
+
+  get onStyle() {
+    return (number: number) &#x3D;&gt; {
+      const cached &#x3D; this._styleCache.get(number);
+      return cached?.on || &#x27;--start: 0.0; --end: 0; --color: #00d4ff&#x27;;
+    };
+  }
+
+  get offStyle() {
+    return (number: number) &#x3D;&gt; {
+      const cached &#x3D; this._styleCache.get(number);
+      return cached?.off || &#x27;--start: 0; --end: 1; --color: #ff005e&#x27;;
+    };
+  }
+
+    /**
+ *
+ * Asks backend server for piechart&#x27;s style data
+ * @param {string} domain domain for which its asking
+ * @returns Percentage covered by first field of a piechart; if error occurs returns -1
+ */
+  public async dataforstyle(domain : string){
+    try{
+    const payload &#x3D; {domain : domain};
+    const resp &#x3D; await firstValueFrom(this._http.post&lt;{ result: number }&gt;(&#x27;/graphfromdomain&#x27;, payload))
+    return resp.result;
+    }
+    catch(err){
+      console.error(&#x60;Data insert failed for domain ${domain}:&#x60;, err);
+      if (err instanceof HttpErrorResponse) {
+        console.error(&#x27;Error status:&#x27;, err.status);
+        console.error(&#x27;Error body:&#x27;, err.error);
+        console.error(&#x27;Error headers:&#x27;, err.headers);
+      }
+      return -1;
+    }
+  }
+   /**
+ * Asks backend server for raport and downloads it onto user&#x27;s machine as a pdf file
+ * @param {number} number number of which website in order in app it generates the raport of
+ * @returns If successful
+ * @example
+ * &lt;button (click)&#x3D;&quot;raportDownload(0)&quot;&gt;DOWNLOAD RAPORT&lt;/button&gt;
+*/
+
+public async raportDownload(number : number){
+      console.log(&quot;download!!!&quot;)
+      let domain &#x3D; this.domainarr[number]
+      let json;
+      console.log(json)
+      try{
+      const payload &#x3D; {domain : domain};
+      const resp &#x3D; await firstValueFrom(this._http.post&lt;RaportResponse&gt;(&#x27;/raportfromdomain&#x27;, payload))
+        console.log(resp)
+      json &#x3D; resp;
+      }
+      catch(err){
+      console.error(&#x60;Data raport failed for domain ${domain}:&#x60;, err);
+      if (err instanceof HttpErrorResponse) {
+        console.error(&#x27;Error status:&#x27;, err.status);
+        console.error(&#x27;Error body:&#x27;, err.error);
+        console.error(&#x27;Error headers:&#x27;, err.headers);
+      }
+      return false;
+      }
+
+
+
+      let textarray : string[][] &#x3D; []
+
+      json.result.forEach(element &#x3D;&gt; {
+        let online &#x3D; element[&#x27;Turned on&#x27;] &#x3D;&#x3D; 1 ? &#x27;Online&#x27; : &#x27;Offline&#x27;;
+        textarray.push(Array(element.Date, online, element.Domain))
+      });
+
+
+
+      const doc &#x3D; new jsPDF();
+      doc.setFontSize(16);
+      doc.text(json.Title, 10, 10);
+      doc.setFontSize(12);
+      const headers &#x3D; [[&quot;Date&quot;, &quot;Online&quot;, &quot;Domain&quot;]];
+      const data &#x3D; textarray;
+      autoTable(doc, {
+        head: headers,
+        body: data,
+        startY: 30,
+      });
+      doc.save(json.Title+&quot;.pdf&quot;);
+
+
+
+
+      // let jsonstring &#x3D; JSON.stringify(json)
+      // const blob &#x3D; new Blob([jsonstring], { type: &#x27;application/json&#x27; });
+      // const url &#x3D; window.URL.createObjectURL(blob);
+      // const a &#x3D; document.createElement(&#x27;a&#x27;);
+      // a.href &#x3D; url;
+      // a.download &#x3D; &#x27;network_calls.json&#x27;;
+      // a.click();
+      // window.URL.revokeObjectURL(url);
+
+      return true;
+
+  }
+}
+</code></pre>
+    </div>
+</div>
+
+
+
+
+
+
+
+
+                   </div><div class="search-results">
+    <div class="has-results">
+        <h1 class="search-results-title"><span class='search-results-count'></span> results matching "<span class='search-query'></span>"</h1>
+        <ul class="search-results-list"></ul>
+    </div>
+    <div class="no-results">
+        <h1 class="search-results-title">No results matching "<span class='search-query'></span>"</h1>
+    </div>
+</div>
+</div>
+               <!-- END CONTENT -->
+           </div>
+       </div>
+
+          <label class="dark-mode-switch">
+               <input type="checkbox">
+               <span class="slider">
+                    <svg class="slider-icon" viewBox="0 0 24 24" fill="none" height="20" stroke="#000" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" width="20" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M21 12.79A9 9 0 1111.21 3 7 7 0 0021 12.79z"></path>
+                    </svg>
+               </span>
+          </label>
+
+       <script>
+            var COMPODOC_CURRENT_PAGE_DEPTH = 1;
+            var COMPODOC_CURRENT_PAGE_CONTEXT = 'interface';
+            var COMPODOC_CURRENT_PAGE_URL = 'RaportResponse.html';
+            var MAX_SEARCH_RESULTS = 15;
+       </script>
+
+       <script>
+               $darkModeToggleSwitchers = document.querySelectorAll('.dark-mode-switch input');
+               checkToggle(darkModeState);
+               if ($darkModeToggleSwitchers.length > 0) {
+                    for (var i = 0; i < $darkModeToggleSwitchers.length; i++) {
+                         $darkModeToggleSwitchers[i].addEventListener('change', function (event) {
+                              darkModeState = !darkModeState;
+                              toggleDarkMode(darkModeState);
+                         });
+                    }
+               }
+          </script>
+
+       <script src="../js/libs/custom-elements.min.js"></script>
+       <script src="../js/libs/lit-html.js"></script>
+
+       <script src="../js/menu-wc.js" defer></script>
+       <script nomodule src="../js/menu-wc_es5.js" defer></script>
+
+       <script src="../js/libs/bootstrap-native.js"></script>
+
+       <script src="../js/libs/es6-shim.min.js"></script>
+       <script src="../js/libs/EventDispatcher.js"></script>
+       <script src="../js/libs/promise.min.js"></script>
+
+       <script src="../js/compodoc.js"></script>
+
+       <script src="../js/tabs.js"></script>
+       <script src="../js/menu.js"></script>
+       <script src="../js/libs/clipboard.min.js"></script>
+       <script src="../js/libs/prism.js"></script>
+       <script src="../js/sourceCode.js"></script>
+          <script src="../js/search/search.js"></script>
+          <script src="../js/search/lunr.min.js"></script>
+          <script src="../js/search/search-lunr.js"></script>
+          <script src="../js/search/search_index.js"></script>
+       <script src="../js/lazy-load-graphs.js"></script>
+
+
+    </body>
+</html>
