@@ -30,3 +30,21 @@ h2, h3 {
     justify-content: space-evenly;
     width: fit-content;
 }
+
+.button1 {
+  margin: 10px;
+	color: white;
+	background-color: #00d4ff;
+	border: 5px solid transparent;
+	transition: .2s ease;
+	border-radius: 50px;
+  padding: 20px;
+  width: fit-content;
+}
+
+.button1:hover {
+	color: #00d4ff;
+	background-color: white;
+	transform: scale(1.1);
+	border: 5px solid #00d4ff;
+}

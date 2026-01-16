@@ -252,6 +252,7 @@ export class Bodystats {
 public async raportDownload(number : number){
       console.log("download!!!")
       let domain = this.domainarr[number]
+      console.log("Domain is: " + domain + "on number " + number)
       let json;
       console.log(json)
       try{

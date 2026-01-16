@@ -121,6 +121,9 @@
 
 
 <h2>VALID REQUESTS</h2>
+<h3>POST /</h3>
+<p><strong>PAYLOAD – NULL</strong>
+<strong>RETURNS</strong> JSON with a message „POST request IS called”</p>
 <h3>POST //datainstert</h3>
 <p><strong>PAYLOAD – JSON</strong>  </p>
 <b>Example :</b><div><pre class="line-numbers"><code class="language-none">    {
@@ -128,9 +131,6 @@
         domain : string
     }</code></pre></div><b>Example :</b><div><pre class="line-numbers"><code class="language-none">Inserts json contents into database, </code></pre></div><p><strong>ON SUCCESS</strong> - returns query results	
 <strong>ON ERROR</strong> - returns code 400 and database response</p>
-<h3>POST /</h3>
-<p><strong>PAYLOAD – NULL</strong>
-<strong>ALWAYS</strong>	- returns JSON with a message „POST request IS called”</p>
 <h3>POST /graphfromdomain</h3>
 <p><strong>PAYLOAD – JSON</strong></p>
 <b>Example :</b><div><pre class="line-numbers"><code class="language-none">    {

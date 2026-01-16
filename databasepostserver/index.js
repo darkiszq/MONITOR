@@ -91,7 +91,7 @@ app.post("/raportfromdomain", async (req, res) => {
   if (id != -1) {
     try {
       const [result] = await dbPool.execute(
-        "SELECT round(register.time,0) as 'Date', register.is_up as 'Turned on', domain.name as 'Domain' FROM register join domain on domain.id = register.domain_id where register.domain_id = 4 ORDER BY time DESC",
+        "SELECT round(register.time,0) as 'Date', register.is_up as 'Turned on', domain.name as 'Domain' FROM register join domain on domain.id = register.domain_id where register.domain_id = ? ORDER BY time DESC",
         [id]
       );
       console.log(result);
