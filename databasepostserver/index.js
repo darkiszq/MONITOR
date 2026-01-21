@@ -103,6 +103,28 @@ app.post("/raportfromdomain", async (req, res) => {
   }
 });
 
+//SELECT DATE(time) as date, ROUND((SUM(CASE WHEN is_up = 1 THEN 1 ELSE 0 END) / COUNT(*)) * 100, 2) as percent FROM register WHERE domain_id = ? GROUP BY DATE(time) ORDER BY date DESC; 
+
+app.post("/graphforraport", async (req, res) => {
+  let { domain } = req.body;
+  let id = -1;
+  id = await idGet(res, domain);
+  if (id != -1) {
+    try {
+      const [result] = await dbPool.execute(
+        "SELECT DATE(time) as date, ROUND((SUM(CASE WHEN is_up = 1 THEN 1 ELSE 0 END) / COUNT(*)) * 100, 2) as percent FROM register WHERE domain_id = ? GROUP BY DATE(time) ORDER BY date DESC; ",
+        [id]
+      );
+      console.log(result);
+      res.json({result: result });
+    } catch (err) {
+      console.error("DB error:", err);
+      res.status(400).json({ ok: false, error: String(err) });
+    }
+  }
+});
+
+
 app.listen(PORT, (error) => {
   if (error) {
     throw error;
@@ -114,6 +136,7 @@ app.listen(PORT, (error) => {
 async function idGet(res, domain) {
   try {
     let id = -1;
+    console.log("DOMAIN IS: " + domain)
     const [result] = await dbPool.execute(
       "SELECT id FROM `domain` where name = ?",
       [domain]

@@ -27,6 +27,20 @@
     "pathRewrite": { "^/ebicom": "" }
   },
 
+  "/onet": {
+    "target": "https://www.onet.pl/",
+    "secure": true,
+    "changeOrigin": true,
+    "pathRewrite": { "^/onet": "" }
+  },
+
+  "/cda": {
+    "target": "https://cdaction.pl/",
+    "secure": true,
+    "changeOrigin": true,
+    "pathRewrite": { "^/cda": "" }
+  },
+
   "/server": {
     "target": "http://localhost:4000",
     "secure": false,
@@ -53,6 +67,14 @@
     "secure": false,
     "changeOrigin": true,
     "pathRewrite" : {"^/raportfromdomain" : ""}
+
+  },
+
+  "/graphforraport" : {
+    "target": "http://localhost:8080/graphforraport",
+    "secure": false,
+    "changeOrigin": true,
+    "pathRewrite" : {"^/graphforraport" : ""}
 
   }
 }

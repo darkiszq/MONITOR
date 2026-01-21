@@ -51,4 +51,42 @@
     </div>
     <button class="button1" (click)="raportDownload(2)"> RAPORT </button>
   </div>
+
+  <div class="row">
+  <div class="shadow-dance-container">
+    <h2> ONET STATUS </h2>
+      <h3>{{onet()}}</h3>
+  </div>
+    <div class="pie" (click)="raportDownload(3)">
+      <table class="charts-css pie hide-data">
+        <caption> Pie #1 </caption>
+        <tbody>
+          <tr><td [style]="onStyle(3)"><span class="data"> </span></td></tr>
+          <tr><td [style]="offStyle(3)"> </td> </tr>
+        </tbody>
+      </table>
+    </div>
+    <button class="button1" (click)="raportDownload(3)"> RAPORT </button>
+  </div>
+
+  <div class="row">
+  <div class="shadow-dance-container">
+    <h2> CDACTION STATUS </h2>
+      <h3>{{cda()}}</h3>
+  </div>
+    <div class="pie" (click)="raportDownload(4)">
+      <table class="charts-css pie hide-data" id="pie4">
+        <caption> Pie #1 </caption>
+        <tbody>
+          <tr><td [style]="onStyle(4)"><span class="data"> </span></td></tr>
+          <tr><td [style]="offStyle(4)"> </td> </tr>
+        </tbody>
+      </table>
+    </div>
+    <button class="button1" (click)="raportDownload(4)"> RAPORT </button>
+  </div>
+</div>
+
+<div style="position:absolute;left:-9999px;top:-9999px;">
+  <canvas id="myChart"></canvas>
 </div>
