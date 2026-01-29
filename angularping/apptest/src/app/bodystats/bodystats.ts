@@ -419,7 +419,7 @@ export class Bodystats {
 public async raportDownload(number : number){
       console.log("download!!!")
       let domain = this.domainarr[number]
-      console.log("Domain is: " + domain + "on number " + number)
+      console.log("Domain is: " + domain + " on number " + number)
       let json;
       console.log(json)
       try{
@@ -505,7 +505,7 @@ public async raportDownload(number : number){
 
       for(let row in json.result){
 
-        arrdate[0].push(json.result[row].date.split('T')[0])
+        arrdate[0].push(json.result[row].date ? json.result[row].date.split('T')[0] : 'N/A')
         arrdate[1].push(json.result[row].percent)
       }
 

@@ -2,6 +2,7 @@ import { Component, signal } from '@angular/core';
 import { Header} from './header/header';
 import 'charts.css';
 import { Bodystats } from "./bodystats/bodystats";
+import { Table } from "./table/table";
 
 /**
  * Main app component
@@ -10,7 +11,7 @@ import { Bodystats } from "./bodystats/bodystats";
 @Component({
   selector: 'app-root',
   standalone: true,
-  imports: [Header, Bodystats],
+  imports: [Header, Bodystats, Table],
   templateUrl: './app.html',
   styleUrls: ['./app.css'],
 })

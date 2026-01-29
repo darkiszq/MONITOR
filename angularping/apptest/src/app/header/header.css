@@ -12,7 +12,7 @@ h1 {
     animation: shadow-dance 2s infinite;
     SHADOW ANIMATION TURNED OFF*/
     text-align: center;
-
+    margin: 0;
 }
 
 @keyframes shadow-dance {

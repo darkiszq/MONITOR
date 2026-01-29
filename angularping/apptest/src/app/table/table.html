@@ -1,0 +1,18 @@
+<table class="table" [class.update]="isUpdated()">
+  <thead>
+  <tr>
+    @for (col of columns; track col) {
+      <th>{{setHeader(col, col)}}</th>
+    }
+  </tr>
+  </thead>
+  <tbody>
+  @for (item of data; track item.domain) {
+    <tr>
+      @for (column of columns; track column) {
+        <td>{{setData(item?.[column], column)}}</td>
+      }
+    </tr>
+  }
+  </tbody>
+</table>

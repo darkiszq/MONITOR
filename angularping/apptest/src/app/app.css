@@ -27,6 +27,13 @@ button:disabled {
   cursor: auto;
 }
 
+.box{
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+}
+
+
 /* everywhere else */
 * {
   font-family: Arial, Helvetica, sans-serif;

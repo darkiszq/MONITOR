@@ -124,6 +124,25 @@ app.post("/graphforraport", async (req, res) => {
   }
 });
 
+app.post("/threelast", async (req, res) =>{
+  try{
+    const [result] = await dbPool.execute(
+      "SELECT domain.name as domain, register.time, register.is_up as online from register join domain on register.domain_id = domain.id GROUP by time DESC limit 3; "
+    )
+    console.log(result)
+    res.json({result:result})
+  }
+  catch(err){
+    console.error("DB error:", err);
+      res.status(400).json({ ok: false, error: String(err) });
+  }
+
+
+
+})
+
+
+
 
 app.listen(PORT, (error) => {
   if (error) {

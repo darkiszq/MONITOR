@@ -76,5 +76,13 @@
     "changeOrigin": true,
     "pathRewrite" : {"^/graphforraport" : ""}
 
+  },
+
+  "/threelast" : {
+    "target": "http://localhost:8080/threelast",
+    "secure": false,
+    "changeOrigin": true,
+    "pathRewrite" : {"^/threelast" : ""}
+
   }
 }
